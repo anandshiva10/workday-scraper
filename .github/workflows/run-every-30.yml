@@ -27,7 +27,7 @@ jobs:
         run: |
           JAR_PATH="$(ls -1 target/*.jar | grep -v '^target/original-' | head -n 1)"
           echo "Running: $JAR_PATH"
-          java -jar "$JAR_PATH"
+          java -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv6Addresses=false -jar "$JAR_PATH"
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           SUPABASE_DB_HOST: ${{ secrets.SUPABASE_DB_HOST }}
